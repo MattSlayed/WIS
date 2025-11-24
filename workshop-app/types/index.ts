@@ -68,6 +68,7 @@ export interface Job {
   serial_number: string;
   manufacturer?: string;
   model?: string;
+  model_number?: string;
 
   // Workflow State
   current_step: WorkflowStep;
@@ -77,6 +78,7 @@ export interface Job {
   has_hazmat: boolean;
   hazmat_level?: HazmatLevel;
   hazmat_notes?: string;
+  hazmat_details?: string;
   hazmat_cleaned: boolean;
   hazmat_cleaned_at?: string;
   hazmat_cleaned_by?: string;
@@ -94,6 +96,9 @@ export interface Job {
 
   // QR Code
   qr_code_url?: string;
+
+  // Notes
+  receiving_notes?: string;
 
   // Timestamps
   received_at: string;
@@ -120,10 +125,13 @@ export interface JobPart {
 export interface JobPhoto {
   id: string;
   job_id: string;
-  step: WorkflowStep;
-  url: string;
+  step?: WorkflowStep;
+  step_number?: number;
+  url?: string;
+  image_url?: string;
   thumbnail_url?: string;
   caption?: string;
+  taken_at?: string;
   ai_analysis?: AIAnalysisResult;
   uploaded_by: string;
   created_at: string;

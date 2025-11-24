@@ -63,12 +63,13 @@ async function detectLabels(imageUrl: string) {
  * Detect specific objects in the image
  */
 async function detectObjects(imageUrl: string) {
-  const [result] = await visionClient.objectLocalization(imageUrl);
-  const objects = result.localizedObjectAnnotations || [];
+  // TODO: Implement object localization when available
+  // const [result] = await visionClient.objectLocalization?.(imageUrl);
+  // const objects = result.localizedObjectAnnotations || [];
 
   return {
-    objects: objects.map((obj) => obj.name || ''),
-    scores: objects.map((obj) => obj.score || 0),
+    objects: [],
+    scores: [],
   };
 }
 
@@ -139,9 +140,9 @@ function mapLabelsToDefects(labels: string[]): {
     'damaged thread': 'thread_damage',
 
     // Surface damage indicators
-    scratch: 'surface_damage',
     gouge: 'surface_damage',
     score: 'surface_damage',
+    chip: 'surface_damage',
   };
 
   const detectedDefects = new Set<DefectType>();

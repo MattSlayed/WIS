@@ -29,7 +29,7 @@ export async function generateQRCode(data: string, options?: QRCode.QRCodeToData
 export async function generateQRCodeCanvas(
   canvas: HTMLCanvasElement,
   data: string,
-  options?: QRCode.QRCodeToCanvasOptions
+  options?: any
 ): Promise<void> {
   try {
     await QRCode.toCanvas(canvas, data, {

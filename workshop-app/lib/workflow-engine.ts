@@ -174,7 +174,7 @@ export class WorkflowEngine {
       };
     }
 
-    const currentStepConfig = WORKFLOW_STEPS[job.current_step];
+    const currentStepConfig = WORKFLOW_STEPS[job.current_step as WorkflowStep];
 
     // Check if there is a next step
     if (!currentStepConfig.next_step) {
@@ -230,7 +230,7 @@ export class WorkflowEngine {
 
     return {
       success: true,
-      message: `Job advanced to ${WORKFLOW_STEPS[nextStep].title}`,
+      message: `Job advanced to ${WORKFLOW_STEPS[nextStep as WorkflowStep].title}`,
       updatedJob: updatedJob as Job,
     };
   }

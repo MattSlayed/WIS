@@ -4,7 +4,14 @@
       "Bash(mkdir:*)",
       "Bash(git add:*)",
       "Bash(git init:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm install)"
     ],
     "deny": [],
     "ask": []
