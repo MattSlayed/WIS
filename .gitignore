@@ -35,11 +35,10 @@ yarn-error.log*
 *.swp
 *.swo
 *~
-.DS_Store
 
 # OS
-Thumbs.db
 .DS_Store
+Thumbs.db
 
 # Google Cloud Credentials
 google-credentials.json
