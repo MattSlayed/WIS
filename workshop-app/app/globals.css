@@ -2,186 +2,542 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================================================
+   NOVATEK Workshop Intelligence System
+   Premium Dark Theme - "Precision Industrial Intelligence"
+   ================================================ */
+
 @layer base {
   :root {
-    --font-inter: 'Inter', system-ui, sans-serif;
-    --font-roboto-mono: 'Roboto Mono', monospace;
+    /* NOVATEK Light Theme - Clean & Professional */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Electric Cyan - NOVATEK Primary */
+    --primary: 187 94% 43%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 187 94% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --danger: 0 84% 60%;
+    --danger-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 187 94% 43%;
+
+    --radius: 0.75rem;
+
+    /* Font Variables */
+    --font-outfit: 'Outfit', system-ui, sans-serif;
+    --font-jetbrains: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  .dark {
+    /* NOVATEK Dark Theme - Precision Industrial */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Electric Cyan - NOVATEK Primary (enhanced for dark) */
+    --primary: 187 94% 43%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 187 72% 20%;
+    --accent-foreground: 187 94% 70%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 72% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --danger: 0 72% 51%;
+    --danger-foreground: 0 0% 100%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 20%;
+    --ring: 187 94% 43%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
   }
 
   body {
-    @apply font-sans text-gray-900;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-semibold;
+  /* Typography Hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
   }
 
   h1 {
-    @apply text-4xl;
+    @apply text-4xl md:text-5xl lg:text-6xl;
   }
 
   h2 {
-    @apply text-3xl;
+    @apply text-3xl md:text-4xl;
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-2xl md:text-3xl;
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-xl md:text-2xl;
   }
 
   h5 {
-    @apply text-lg;
+    @apply text-lg md:text-xl;
   }
 
   h6 {
-    @apply text-base;
+    @apply text-base md:text-lg;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+
+  /* Scrollbar styling for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full hover:bg-muted-foreground/30;
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 }
 
 @layer components {
-  /* Button Styles */
-  .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  /* ================================================
+     NOVATEK Glass Card - Premium Effect
+     ================================================ */
+  .glass-card {
+    @apply relative overflow-hidden rounded-xl;
+    @apply bg-card/80 backdrop-blur-xl;
+    @apply border border-border/50;
+    @apply shadow-lg shadow-black/5;
+    @apply transition-all duration-300;
   }
 
-  .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  .glass-card:hover {
+    @apply border-primary/30 shadow-glow-sm;
   }
 
-  .btn-secondary {
-    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  .dark .glass-card {
+    @apply bg-card/60;
+    @apply shadow-2xl shadow-black/20;
   }
 
-  .btn-danger {
-    @apply btn bg-danger-600 text-white hover:bg-danger-700 focus:ring-danger-500;
+  /* ================================================
+     Grid Background Pattern
+     ================================================ */
+  .grid-bg {
+    @apply relative;
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
-  .btn-success {
-    @apply btn bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+  .grid-bg::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(var(--primary) / 0.15), transparent);
   }
 
-  .btn-ghost {
-    @apply btn bg-transparent hover:bg-gray-100 focus:ring-gray-500;
+  /* ================================================
+     Glow Effects
+     ================================================ */
+  .glow-border {
+    @apply relative;
   }
 
-  /* Input Styles */
-  .input {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed;
+  .glow-border::before {
+    content: '';
+    @apply absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.4), hsl(var(--primary) / 0.1));
+    z-index: -1;
   }
 
-  .input-error {
-    @apply input border-danger-500 focus:ring-danger-500 focus:border-danger-500;
+  .glow-border:hover::before {
+    @apply opacity-100;
   }
 
-  /* Card Styles */
-  .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden;
+  /* ================================================
+     Shimmer Effect for Loading States
+     ================================================ */
+  .shimmer {
+    @apply relative overflow-hidden;
   }
 
-  .card-header {
-    @apply px-6 py-4 border-b border-gray-200;
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 
-  .card-body {
-    @apply px-6 py-4;
+  /* ================================================
+     NOVATEK Button Variants
+     ================================================ */
+  .btn-novatek {
+    @apply relative inline-flex items-center justify-center;
+    @apply px-6 py-3 rounded-lg font-medium;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
-  .card-footer {
-    @apply px-6 py-4 bg-gray-50 border-t border-gray-200;
+  .btn-novatek-primary {
+    @apply btn-novatek;
+    @apply bg-primary text-primary-foreground;
+    @apply hover:bg-primary/90 hover:shadow-glow-md;
+    @apply active:scale-[0.98];
   }
 
-  /* Badge Styles */
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  .btn-novatek-secondary {
+    @apply btn-novatek;
+    @apply bg-secondary text-secondary-foreground;
+    @apply border border-border;
+    @apply hover:bg-secondary/80 hover:border-primary/50;
+  }
+
+  .btn-novatek-ghost {
+    @apply btn-novatek;
+    @apply bg-transparent text-foreground;
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-novatek-outline {
+    @apply btn-novatek;
+    @apply bg-transparent border-2 border-primary text-primary;
+    @apply hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* ================================================
+     Status Indicators with Glow
+     ================================================ */
+  .status-indicator {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
+    @apply transition-all duration-200;
+  }
+
+  .status-success {
+    @apply status-indicator bg-success/10 text-success border border-success/20;
+  }
+
+  .status-warning {
+    @apply status-indicator bg-warning/10 text-warning border border-warning/20;
+  }
+
+  .status-danger {
+    @apply status-indicator bg-danger/10 text-danger border border-danger/20;
+  }
+
+  .status-info {
+    @apply status-indicator bg-primary/10 text-primary border border-primary/20;
+  }
+
+  /* Pulsing dot for active status */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-dot-success {
+    @apply status-dot bg-success animate-pulse shadow-[0_0_8px_hsl(var(--success))];
+  }
+
+  .status-dot-warning {
+    @apply status-dot bg-warning animate-pulse shadow-[0_0_8px_hsl(var(--warning))];
+  }
+
+  .status-dot-danger {
+    @apply status-dot bg-danger animate-pulse shadow-[0_0_8px_hsl(var(--danger))];
+  }
+
+  /* ================================================
+     Step Progress - Industrial Style
+     ================================================ */
+  .step-progress {
+    @apply relative flex items-center justify-between;
+  }
+
+  .step-progress::before {
+    content: '';
+    @apply absolute top-1/2 left-0 right-0 h-0.5 bg-border -translate-y-1/2;
+    z-index: 0;
+  }
+
+  .step-item {
+    @apply relative z-10 flex flex-col items-center gap-2;
+  }
+
+  .step-circle {
+    @apply w-10 h-10 rounded-full flex items-center justify-center;
+    @apply font-mono text-sm font-semibold;
+    @apply transition-all duration-300;
+    @apply border-2;
+  }
+
+  .step-circle-completed {
+    @apply step-circle bg-success border-success text-success-foreground;
+    @apply shadow-[0_0_12px_hsl(var(--success)/0.5)];
+  }
+
+  .step-circle-current {
+    @apply step-circle bg-primary border-primary text-primary-foreground;
+    @apply shadow-[0_0_16px_hsl(var(--primary)/0.6)] animate-glow-pulse;
+  }
+
+  .step-circle-pending {
+    @apply step-circle bg-muted border-border text-muted-foreground;
+  }
+
+  .step-circle-blocked {
+    @apply step-circle bg-danger/10 border-danger/50 text-danger;
+  }
+
+  /* ================================================
+     Data Cards - Technical Display
+     ================================================ */
+  .data-card {
+    @apply glass-card p-6;
+  }
+
+  .data-card-header {
+    @apply flex items-center justify-between mb-4;
+  }
+
+  .data-card-title {
+    @apply text-sm font-medium text-muted-foreground uppercase tracking-wider;
+  }
+
+  .data-card-value {
+    @apply text-3xl font-mono font-bold text-foreground;
+  }
+
+  .data-card-trend {
+    @apply flex items-center gap-1 text-sm font-medium;
+  }
+
+  .data-card-trend-up {
+    @apply data-card-trend text-success;
+  }
+
+  .data-card-trend-down {
+    @apply data-card-trend text-danger;
+  }
+
+  /* ================================================
+     Input Fields - Premium Style
+     ================================================ */
+  .input-novatek {
+    @apply w-full px-4 py-3 rounded-lg;
+    @apply bg-input/50 border border-border;
+    @apply text-foreground placeholder:text-muted-foreground;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary;
+    @apply hover:border-primary/50;
+  }
+
+  .input-novatek:focus {
+    @apply shadow-glow-sm;
+  }
+
+  .dark .input-novatek {
+    @apply bg-input/30;
+  }
+
+  /* ================================================
+     Navigation - Sleek Header
+     ================================================ */
+  .nav-header {
+    @apply fixed top-0 left-0 right-0 z-50;
+    @apply bg-background/80 backdrop-blur-xl;
+    @apply border-b border-border/50;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 rounded-lg text-sm font-medium;
+    @apply text-muted-foreground;
+    @apply transition-all duration-200;
+    @apply hover:text-foreground hover:bg-accent;
+  }
+
+  .nav-link-active {
+    @apply nav-link text-primary bg-primary/10;
+  }
+
+  /* ================================================
+     Floating Action Styles
+     ================================================ */
+  .fab {
+    @apply fixed bottom-6 right-6;
+    @apply w-14 h-14 rounded-full;
+    @apply bg-primary text-primary-foreground;
+    @apply flex items-center justify-center;
+    @apply shadow-glow-lg;
+    @apply transition-all duration-300;
+    @apply hover:scale-110 hover:shadow-glow-lg;
+    @apply active:scale-95;
+    z-index: 50;
+  }
+
+  /* ================================================
+     Table Styles - Data Grid
+     ================================================ */
+  .table-novatek {
+    @apply w-full border-collapse;
+  }
+
+  .table-novatek thead {
+    @apply bg-muted/50;
+  }
+
+  .table-novatek th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground;
+    @apply border-b border-border;
+  }
+
+  .table-novatek td {
+    @apply px-4 py-4 text-sm;
+    @apply border-b border-border/50;
+  }
+
+  .table-novatek tbody tr {
+    @apply transition-colors duration-150;
+    @apply hover:bg-accent/50;
+  }
+
+  /* ================================================
+     Badge Variants
+     ================================================ */
+  .badge-novatek {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold;
+    @apply transition-all duration-200;
   }
 
   .badge-primary {
-    @apply badge bg-primary-100 text-primary-800;
+    @apply badge-novatek bg-primary/10 text-primary border border-primary/20;
   }
 
   .badge-success {
-    @apply badge bg-success-100 text-success-800;
+    @apply badge-novatek bg-success/10 text-success border border-success/20;
   }
 
   .badge-warning {
-    @apply badge bg-warning-100 text-warning-800;
+    @apply badge-novatek bg-warning/10 text-warning border border-warning/20;
   }
 
   .badge-danger {
-    @apply badge bg-danger-100 text-danger-800;
+    @apply badge-novatek bg-danger/10 text-danger border border-danger/20;
   }
 
-  .badge-gray {
-    @apply badge bg-gray-100 text-gray-800;
+  .badge-secondary {
+    @apply badge-novatek bg-secondary text-secondary-foreground;
   }
 
-  /* Form Group */
-  .form-group {
-    @apply space-y-1.5;
+  /* ================================================
+     Loading States
+     ================================================ */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded;
   }
 
-  .form-label {
-    @apply block text-sm font-medium text-gray-700;
+  .spinner-novatek {
+    @apply w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin;
   }
 
-  .form-help {
-    @apply text-sm text-gray-500;
+  /* ================================================
+     Tooltip Enhancement
+     ================================================ */
+  .tooltip-novatek {
+    @apply px-3 py-2 rounded-lg text-sm;
+    @apply bg-popover text-popover-foreground;
+    @apply border border-border shadow-lg;
   }
 
-  .form-error {
-    @apply text-sm text-danger-600;
+  /* ================================================
+     Dividers
+     ================================================ */
+  .divider {
+    @apply h-px w-full bg-border;
   }
 
-  /* Loading Spinner */
-  .spinner {
-    @apply inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-r-transparent;
+  .divider-vertical {
+    @apply w-px h-full bg-border;
   }
 
-  /* Progress Bar */
-  .progress-bar {
-    @apply relative w-full h-2 bg-gray-200 rounded-full overflow-hidden;
-  }
-
-  .progress-bar-fill {
-    @apply h-full bg-primary-600 transition-all duration-300 ease-in-out;
-  }
-
-  /* Step Indicator */
-  .step-indicator {
-    @apply flex items-center justify-between;
-  }
-
-  .step {
-    @apply flex items-center space-x-2;
-  }
-
-  .step-number {
-    @apply flex items-center justify-center w-8 h-8 rounded-full text-sm font-medium;
-  }
-
-  .step-active {
-    @apply bg-primary-600 text-white;
-  }
-
-  .step-completed {
-    @apply bg-success-600 text-white;
-  }
-
-  .step-pending {
-    @apply bg-gray-200 text-gray-600;
-  }
-
-  .step-locked {
-    @apply bg-gray-100 text-gray-400 opacity-50;
-  }
+  /* ================================================
+     Animations
+     ================================================ */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
 }
 
 @layer utilities {
@@ -207,6 +563,7 @@
   .gpu-accelerated {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    will-change: transform;
   }
 
   /* Hide scrollbar but keep functionality */
@@ -218,27 +575,69 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Text gradient effect */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #06b6d4, #22d3ee);
+  }
+
+  /* Noise overlay for texture */
+  .noise-overlay {
+    @apply pointer-events-none fixed inset-0 z-50 opacity-[0.015];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Gradient mesh background */
+  .gradient-mesh {
+    background-image:
+      radial-gradient(at 40% 20%, hsl(var(--primary) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsl(var(--primary) / 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(var(--primary) / 0.1) 0px, transparent 50%);
+  }
 }
 
 /* Print styles */
 @media print {
   body {
-    @apply bg-white;
+    @apply bg-white text-black;
   }
 
   .no-print {
     display: none !important;
   }
 
-  .card {
-    @apply shadow-none border-gray-400;
+  .glass-card {
+    @apply shadow-none border-gray-400 bg-white;
   }
 }
 
 /* PWA specific styles */
 @media (display-mode: standalone) {
-  /* Styles for when app is installed as PWA */
   body {
     -webkit-touch-callout: none;
+  }
+
+  .nav-header {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
